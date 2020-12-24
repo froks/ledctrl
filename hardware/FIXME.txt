@@ -1,0 +1,2 @@
+o c1, c2 should be 0603
+o holes for power connector are to small

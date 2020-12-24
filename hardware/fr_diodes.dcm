@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP BAT54C
+D Double diode Shottky Cathodes communes
+K DEV DIODE
+$ENDCMP
+#
+$CMP DOUBLE_SCH_KCOM
+D Double diode Shottky Cathodes communes
+K DEV DIODE
+$ENDCMP
+#
+#End Doc Library

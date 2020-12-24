@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name ledctrl_v2_1-rescue)(type Legacy)(uri ${KIPRJMOD}/ledctrl_v2_1-rescue.lib)(options "")(descr ""))
+  (lib (name stm32_lc)(type Legacy)(uri ${KIPRJMOD}/stm32_lc.lib)(options "")(descr ""))
+  (lib (name fr_regulator)(type Legacy)(uri ${KIPRJMOD}/fr_regulator.lib)(options "")(descr ""))
+  (lib (name fr_oscillator)(type Legacy)(uri ${KIPRJMOD}/fr_oscillator.lib)(options "")(descr ""))
+  (lib (name fr_connector)(type Legacy)(uri ${KIPRJMOD}/fr_connector.lib)(options "")(descr ""))
+  (lib (name fr_mosfet)(type Legacy)(uri ${KIPRJMOD}/fr_mosfet.lib)(options "")(descr ""))
+  (lib (name fr_diodes)(type Legacy)(uri ${KIPRJMOD}/fr_diodes.lib)(options "")(descr ""))
+)

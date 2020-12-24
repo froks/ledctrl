@@ -1,0 +1,120 @@
+missing: firmware modification of micropython
+
+pin layout
+ledctrl v2.1
+
+right side:
+o  o PWM8  PWM16
+o  o PWM7  PWM15
+o  o PWM6  PWM14
+o  o PWM5  PWM13
+o  o Vbat  Vbat
+o  o PWM4  PWM12
+o  o PWM3  PWM11
+o  o PWM2  PWM10
+o  o PWM1  PWM9
+o  o Vbat  Vbat
+
+left side:
+o  o ADC2  ADC3
+o  o SCLK  ADC1
+o  o GND   GND
+o  o MISO  RX  
+o  o MOSI  TX  
+o  o PWM20 PWM24
+o  o PWM19 PWM23
+o  o PWM18 PWM22
+o  o PWM17 PWM21
+o  o Vbat  Vbat
+
+
+# ohne Pin('CH3') und mit p = Pin('CH3', mode=Pin.AF_PP, af=AF_TIM1)
+
+from pyb import Pin, Timer
+tim1 = Timer(1, freq=1000)
+tim2 = Timer(2, freq=1000)
+tim4 = Timer(4, freq=1000)
+tim5 = Timer(5, freq=1000)
+tim8 = Timer(8, freq=1000)
+tim9 = Timer(9, freq=1000)
+tim10 = Timer(10, freq=1000)
+tim11 = Timer(11, freq=1000)
+tim12 = Timer(12, freq=1000)
+
+ch_pins = []
+ch_pins.append(Pin('CH1', mode=Pin.AF_PP, af=Pin.AF2_TIM5))
+ch_pins.append(Pin('CH2', mode=Pin.AF_PP, af=Pin.AF2_TIM5))
+ch_pins.append(Pin('CH3', mode=Pin.AF_PP, af=Pin.AF1_TIM1)) 
+ch_pins.append(Pin('CH4', mode=Pin.AF_PP, af=Pin.AF1_TIM1)) 
+ch_pins.append(Pin('CH5', mode=Pin.AF_PP, af=Pin.AF9_TIM12)) 
+ch_pins.append(Pin('CH6', mode=Pin.AF_PP, af=Pin.AF9_TIM12)) 
+ch_pins.append(Pin('CH7', mode=Pin.AF_PP, af=Pin.AF2_TIM4)) 
+ch_pins.append(Pin('CH8', mode=Pin.AF_PP, af=Pin.AF3_TIM8)) 
+ch_pins.append(Pin('CH9', mode=Pin.AF_PP, af=Pin.AF1_TIM1)) 
+ch_pins.append(Pin('CH10', mode=Pin.AF_PP, af=Pin.AF1_TIM1)) 
+ch_pins.append(Pin('CH11', mode=Pin.AF_PP, af=Pin.AF1_TIM2)) 
+ch_pins.append(Pin('CH12', mode=Pin.AF_PP, af=Pin.AF1_TIM2)) 
+ch_pins.append(Pin('CH13', mode=Pin.AF_PP, af=Pin.AF2_TIM4)) 
+ch_pins.append(Pin('CH14', mode=Pin.AF_PP, af=Pin.AF2_TIM4)) 
+ch_pins.append(Pin('CH15', mode=Pin.AF_PP, af=Pin.AF2_TIM4)) 
+ch_pins.append(Pin('CH16', mode=Pin.AF_PP, af=Pin.AF3_TIM8)) 
+ch_pins.append(Pin('CH17', mode=Pin.AF_PP, af=Pin.AF2_TIM5)) 
+ch_pins.append(Pin('CH18', mode=Pin.AF_PP, af=Pin.AF3_TIM9))
+ch_pins.append(Pin('CH19', mode=Pin.AF_PP, af=Pin.AF3_TIM11))
+ch_pins.append(Pin('CH20', mode=Pin.AF_PP, af=Pin.AF1_TIM2)) 
+ch_pins.append(Pin('CH21', mode=Pin.AF_PP, af=Pin.AF2_TIM5)) 
+ch_pins.append(Pin('CH22', mode=Pin.AF_PP, af=Pin.AF3_TIM9)) 
+ch_pins.append(Pin('CH23', mode=Pin.AF_PP, af=Pin.AF3_TIM10)) 
+ch_pins.append(Pin('CH24', mode=Pin.AF_PP, af=Pin.AF1_TIM2))
+
+ch1 = tim5.channel(3, Timer.PWM);
+ch2 = tim5.channel(4, Timer.PWM);
+ch3 = tim1.channel(3, Timer.PWM);
+ch4 = tim1.channel(4, Timer.PWM);
+ch5 = tim12.channel(1, Timer.PWM);
+ch6 = tim12.channel(2, Timer.PWM);
+ch7 = tim4.channel(3, Timer.PWM);
+ch8 = tim8.channel(1, Timer.PWM);
+ch9 = tim1.channel(1, Timer.PWM);
+ch10 = tim1.channel(2, Timer.PWM);
+ch11 = tim2.channel(3, Timer.PWM);
+ch12 = tim2.channel(4, Timer.PWM);
+ch13 = tim4.channel(1, Timer.PWM);
+ch14 = tim4.channel(2, Timer.PWM);
+ch15 = tim4.channel(4, Timer.PWM);
+ch16 = tim8.channel(2, Timer.PWM);
+ch17 = tim5.channel(1, Timer.PWM);
+ch18 = tim9.channel(1, Timer.PWM);
+ch19 = tim11.channel(1, Timer.PWM);
+ch20 = tim2.channel(2, Timer.PWM);
+ch21 = tim5.channel(2, Timer.PWM);
+ch22 = tim9.channel(2, Timer.PWM);
+ch23 = tim10.channel(1, Timer.PWM);
+ch24 = tim2.channel(1, Timer.PWM);
+
+
+_CH1  - PA2, TIM5, CH3
+_CH2  - PA3, TIM5, CH4
+_CH3  - PE13, TIM1, CH3
+_CH4  - PE14, TIM1, CH4
+_CH5  - PB14, TIM12, CH1
+_CH6  - PB15, TIM12, CH2
+_CH7  - PD14, TIM4, CH3
+_CH8  - PC6, TIM8, CH1
+_CH9  - PE9, TIM1, CH1
+_CH10 - PE11, TIM1, CH2 
+_CH11 - PB10, TIM2, CH3
+_CH12 - PB11, TIM2, CH4
+_CH13 - PB1, TIM4, CH1
+_CH14 - PD13, TIM4, CH2
+_CH15 - PD15, TIM4, CH4
+_CH16 - PC7, TIM8, CH2
+_CH17 - PA0, TIM5, CH1
+_CH18 - PE5, TIM9, CH1
+_CH19 - PB9, TIM11, CH1
+_CH20 - PB3, TIM2, CH2
+_CH21 - PA1, TIM5, CH1
+CH22 - PE6, TIM9, CH2
+CH23 - PB8, TIM10, CH1
+CH24 - PA15, TIM2, CH1
+
